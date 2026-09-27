@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tiktok-views-generator"
+version = "2.6.1"
+description = "Windows desktop TikTok Views Generator — session-driven view pipeline with proxy rotation, worker pool, and driver output."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "fridgegate labs", email = "spud@fridgegate.dev" }]
+keywords = ["tiktok", "views", "generator", "pipeline", "worker", "proxy"]
+
+dependencies = [
+    "httpx[http2]>=0.27.0",
+    "aiohttp>=3.9.5",
+    "pydantic>=2.7.1",
+    "PyYAML>=6.0.1",
+    "rich>=13.7.1",
+    "tenacity>=8.3.0",
+    "python-dotenv>=1.0.1",
+    "uvloop>=0.19.0; sys_platform != 'win32'",
+    "winloop>=0.1.6; sys_platform == 'win32'",
+    "faker>=25.2.0",
+    "fake-useragent>=1.5.1",
+    "curl-cffi>=0.7.0",
+    "PySide6>=6.7.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.2.0", "pytest-asyncio>=0.23.7", "ruff>=0.5.0", "mypy>=1.10.0"]
+
+[project.scripts]
+tiktok-views = "tiktok_views_generator.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
