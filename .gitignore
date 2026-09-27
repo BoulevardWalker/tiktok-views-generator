@@ -1,0 +1,41 @@
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# tool caches
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# runtime artifacts (views generator writes these)
+sessions/*.json
+sessions/*.enc
+logs/
+out/
+*.log
+*.sqlite
+*.sqlite3
+
+# env
+.env
+.env.*
+!.env.example
+
+# windows
+Thumbs.db
+desktop.ini
+*.lnk
+
+# editors
+.vscode/
+.idea/
+*.swp
