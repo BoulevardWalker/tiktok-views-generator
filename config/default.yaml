@@ -1,0 +1,39 @@
+# tiktok-views-generator — default runtime config
+runtime:
+  concurrency: 64
+  requests_per_session: 25
+  watch_seconds: 12
+  request_timeout: 15.0
+  retries: 3
+  backoff_base: 0.6
+
+ingest:
+  handler: cli
+  csv_delimiter: ","
+  strip_query: true
+
+processors:
+  - resolve_video_id
+  - mint_session
+  - attach_proxy
+  - build_request
+
+driver:
+  name: stdout
+  options:
+    jsonl: false
+    color: true
+
+proxy:
+  pool_file: proxies/pool.txt
+  rotate_every: 8
+  health_check: false
+
+session:
+  dir: sessions/
+  ttl_seconds: 1800
+  encrypt: false
+
+logging:
+  level: INFO
+  file: logs/run.log
